@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { Mail, Loader, Package } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
@@ -9,7 +9,6 @@ export const Login: React.FC = () => {
   const [name, setName] = useState('');
   const [otp, setOtp] = useState('');
   const [step, setStep] = useState<'email' | 'otp'>('email');
-  const [otpSent, setOtpSent] = useState(false);
 
   // Redirect if already logged in
   if (user) {
@@ -22,7 +21,6 @@ export const Login: React.FC = () => {
 
     try {
       await sendOTP(email, name);
-      setOtpSent(true);
       setStep('otp');
     } catch (error) {
       // Error handling is done in context
@@ -43,7 +41,6 @@ export const Login: React.FC = () => {
   const resetForm = () => {
     setStep('email');
     setOtp('');
-    setOtpSent(false);
   };
 
   return (
