@@ -1,0 +1,282 @@
+.header {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-icon {
+  background: var(--primary-color);
+  padding: 8px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.logo span {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: none;
+  align-items: center;
+  gap: 32px;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.desktop-nav a:hover {
+  color: var(--primary-color);
+}
+
+/* Desktop Actions */
+.desktop-actions {
+  display: none;
+  align-items: center;
+  gap: 16px;
+}
+
+.cart-link {
+  position: relative;
+  padding: 8px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #374151;
+  transition: color 0.2s;
+}
+
+.cart-link:hover {
+  color: var(--primary-color);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #ef4444;
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* User Menu */
+.user-menu {
+  position: relative;
+}
+
+.user-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: none;
+  border: none;
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.user-button:hover {
+  color: var(--primary-color);
+}
+
+.user-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 8px;
+  width: 192px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  z-index: 50;
+}
+
+.user-dropdown a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #374151;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+}
+
+.user-dropdown a:hover {
+  background-color: #f3f4f6;
+}
+
+.user-dropdown hr {
+  margin: 8px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+.logout-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  color: #dc2626;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #f3f4f6;
+}
+
+.login-btn {
+  background: var(--primary-color);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.login-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* Mobile Actions */
+.mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-button {
+  padding: 8px;
+  background: none;
+  border: none;
+  color: #374151;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.menu-button:hover {
+  color: var(--primary-color);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  border-top: 1px solid #e5e7eb;
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-nav a {
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.mobile-nav a:hover {
+  color: var(--primary-color);
+}
+
+.mobile-user-section {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+.mobile-user-name {
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.mobile-logout-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  color: #dc2626;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.mobile-logout-btn:hover {
+  color: #b91c1c;
+}
+
+.mobile-login-btn {
+  margin: 8px 12px;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+  display: block;
+  transition: background-color 0.2s;
+}
+
+.mobile-login-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* Desktop breakpoint */
+@media (min-width: 768px) {
+  .desktop-nav,
+  .desktop-actions {
+    display: flex;
+  }
+  
+  .mobile-actions {
+    display: none;
+  }
+}
