@@ -11,6 +11,10 @@ import productRoutes from './routes/products';
 import orderRoutes from './routes/orders';
 import addressRoutes from './routes/addresses';
 import userRoutes from './routes/users';
+import paymentRoutes from './routes/payments';
+import notificationRoutes from './routes/notifications';
+import analyticsRoutes from './routes/analytics';
+import subscriptionRoutes from './routes/subscriptions';
 
 // Load environment variables
 dotenv.config();
@@ -41,6 +45,10 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/addresses', addressRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/payments', paymentRoutes);
+app.use('/api/notifications', notificationRoutes);
+app.use('/api/analytics', analyticsRoutes);
+app.use('/api/subscriptions', subscriptionRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

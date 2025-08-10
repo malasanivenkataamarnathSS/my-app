@@ -15,6 +15,10 @@ const products_1 = __importDefault(require("./routes/products"));
 const orders_1 = __importDefault(require("./routes/orders"));
 const addresses_1 = __importDefault(require("./routes/addresses"));
 const users_1 = __importDefault(require("./routes/users"));
+const payments_1 = __importDefault(require("./routes/payments"));
+const notifications_1 = __importDefault(require("./routes/notifications"));
+const analytics_1 = __importDefault(require("./routes/analytics"));
+const subscriptions_1 = __importDefault(require("./routes/subscriptions"));
 // Load environment variables
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -39,6 +43,10 @@ app.use('/api/products', products_1.default);
 app.use('/api/orders', orders_1.default);
 app.use('/api/addresses', addresses_1.default);
 app.use('/api/users', users_1.default);
+app.use('/api/payments', payments_1.default);
+app.use('/api/notifications', notifications_1.default);
+app.use('/api/analytics', analytics_1.default);
+app.use('/api/subscriptions', subscriptions_1.default);
 // Health check
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
