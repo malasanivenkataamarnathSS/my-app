@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Custom styles */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -26,12 +22,11 @@ code {
     monospace;
 }
 
-/* Leaflet map styles */
-.leaflet-container {
-  height: 400px;
-  width: 100%;
-  border-radius: 0.5rem;
-}
+/* Basic utility classes */
+.min-h-screen { min-height: 100vh; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.bg-gray-50 { background-color: #f9fafb; }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
