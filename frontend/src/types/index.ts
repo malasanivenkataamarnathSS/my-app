@@ -172,6 +172,7 @@ export interface AuthContextType {
   user: User | null;
   token: string | null;
   loading: boolean;
+  error: string | null;
   login: (email: string, otp: string) => Promise<void>;
   sendOTP: (email: string, name?: string) => Promise<void>;
   logout: () => void;
@@ -179,6 +180,7 @@ export interface AuthContextType {
   addAddress: (address: Omit<Address, '_id' | 'createdAt' | 'updatedAt'>) => Promise<void>;
   updateAddress: (addressId: string, address: Partial<Address>) => Promise<void>;
   deleteAddress: (addressId: string) => Promise<void>;
+  clearError: () => void;
 }
 
 export interface CartContextType {

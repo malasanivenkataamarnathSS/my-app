@@ -244,10 +244,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const clearError = (): void => {
+    dispatch({ type: 'SET_ERROR', payload: null });
+  };
+
   const contextValue: AuthContextType = {
     user: state.user,
     token: state.token,
     loading: state.loading,
+    error: state.error,
     login,
     sendOTP,
     logout,
@@ -255,6 +260,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     addAddress,
     updateAddress,
     deleteAddress,
+    clearError,
   };
 
   return (
