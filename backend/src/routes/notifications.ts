@@ -161,9 +161,12 @@ router.post('/broadcast',
 );
 
 // Get user notifications
-router.get('/user/:userId?', authenticate, async (req: AuthRequest, res: Response) => {
+router.get('/user', authenticate, async (req: AuthRequest, res: Response) => {
   try {
-    const userId = req.params.userId || req.user?._id?.toString();
+    const userId = req.user?._id?.toString();
+    if (!userId) {
+      return res.status(401).json({ success: false, error: 'User not authenticated' });
+    }
     const page = parseInt(req.query.page as string) || 1;
     const limit = parseInt(req.query.limit as string) || 20;
     const skip = (page - 1) * limit;
