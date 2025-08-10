@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingCart, User, Menu, X, LogOut, Settings, Package, Heart } from 'lucide-react';
+import { ShoppingCart, User, Menu, X, LogOut, Settings, Package, Heart, Bell, BarChart3, CreditCard, MapPin, Crown } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCart } from '../../contexts/CartContext';
+import { NotificationCenter } from '../notifications/NotificationCenter';
 
 export const Header: React.FC = () => {
   const { user, logout } = useAuth();
   const { getTotalItems } = useCart();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
   const handleLogout = async () => {
     await logout();
@@ -47,18 +49,52 @@ export const Header: React.FC = () => {
             >
               Orders
             </Link>
+            <Link
+              to="/subscriptions"
+              className="text-gray-600 hover:text-primary-500 transition-colors flex items-center"
+            >
+              <Crown className="h-4 w-4 mr-1" />
+              Plans
+            </Link>
+            <Link
+              to="/maps"
+              className="text-gray-600 hover:text-primary-500 transition-colors flex items-center"
+            >
+              <MapPin className="h-4 w-4 mr-1" />
+              Maps
+            </Link>
             {user.role === 'admin' && (
-              <Link
-                to="/admin"
-                className="text-gray-600 hover:text-primary-500 transition-colors"
-              >
-                Admin
-              </Link>
+              <>
+                <Link
+                  to="/admin"
+                  className="text-gray-600 hover:text-primary-500 transition-colors"
+                >
+                  Admin
+                </Link>
+                <Link
+                  to="/analytics"
+                  className="text-gray-600 hover:text-primary-500 transition-colors flex items-center"
+                >
+                  <BarChart3 className="h-4 w-4 mr-1" />
+                  Analytics
+                </Link>
+              </>
             )}
           </nav>
 
           {/* Cart and User Actions */}
           <div className="flex items-center space-x-4">
+            {/* Notifications */}
+            <button
+              onClick={() => setIsNotificationOpen(true)}
+              className="relative p-2 text-gray-600 hover:text-primary-500 transition-colors"
+            >
+              <Bell className="h-6 w-6" />
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                3
+              </span>
+            </button>
+
             {/* Cart Icon */}
             <Link
               to="/cart"
@@ -97,6 +133,22 @@ export const Header: React.FC = () => {
                   >
                     <Settings className="h-4 w-4" />
                     <span>Profile</span>
+                  </Link>
+                  <Link
+                    to="/payments"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <CreditCard className="h-4 w-4" />
+                    <span>Payments</span>
+                  </Link>
+                  <Link
+                    to="/subscriptions"
+                    className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <Crown className="h-4 w-4" />
+                    <span>Subscriptions</span>
                   </Link>
                   <Link
                     to="/favorites"
@@ -146,14 +198,44 @@ export const Header: React.FC = () => {
               >
                 Orders
               </Link>
+              <Link
+                to="/subscriptions"
+                className="text-gray-600 hover:text-primary-500 py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Subscriptions
+              </Link>
+              <Link
+                to="/payments"
+                className="text-gray-600 hover:text-primary-500 py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Payments
+              </Link>
+              <Link
+                to="/maps"
+                className="text-gray-600 hover:text-primary-500 py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Maps
+              </Link>
               {user.role === 'admin' && (
-                <Link
-                  to="/admin"
-                  className="text-gray-600 hover:text-primary-500 py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Admin
-                </Link>
+                <>
+                  <Link
+                    to="/admin"
+                    className="text-gray-600 hover:text-primary-500 py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Admin
+                  </Link>
+                  <Link
+                    to="/analytics"
+                    className="text-gray-600 hover:text-primary-500 py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Analytics
+                  </Link>
+                </>
               )}
             </nav>
           </div>
@@ -167,6 +249,12 @@ export const Header: React.FC = () => {
           onClick={() => setIsMenuOpen(false)}
         ></div>
       )}
+
+      {/* Notification Center */}
+      <NotificationCenter 
+        isOpen={isNotificationOpen} 
+        onClose={() => setIsNotificationOpen(false)} 
+      />
     </header>
   );
 };

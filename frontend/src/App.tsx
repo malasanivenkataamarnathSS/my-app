@@ -9,6 +9,10 @@ import { Profile } from './pages/Profile';
 import { Cart } from './pages/Cart';
 import { Orders } from './pages/Orders';
 import { AdminDashboard } from './pages/AdminDashboard';
+import { Analytics } from './pages/Analytics';
+import { Subscriptions } from './pages/Subscriptions';
+import { Payments } from './pages/Payments';
+import { Maps } from './pages/Maps';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import './App.css';
 
@@ -59,6 +63,38 @@ function App() {
                   element={
                     <ProtectedRoute adminOnly>
                       <AdminDashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/analytics"
+                  element={
+                    <ProtectedRoute adminOnly>
+                      <Analytics />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/subscriptions"
+                  element={
+                    <ProtectedRoute>
+                      <Subscriptions />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/payments"
+                  element={
+                    <ProtectedRoute>
+                      <Payments />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/maps"
+                  element={
+                    <ProtectedRoute>
+                      <Maps />
                     </ProtectedRoute>
                   }
                 />
